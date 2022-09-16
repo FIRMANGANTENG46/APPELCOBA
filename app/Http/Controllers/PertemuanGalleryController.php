@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Pertemuan;
 use Illuminate\Http\Request;
-use App\Models\ProductGallery;
+use App\Models\PertemuanGallery;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\ProductGalleryRequest;
+use App\Http\Requests\PertemuanGalleryRequest;
 
-class ProductGalleryController extends Controller
+class PertemuanGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product $product)
+    public function index(Pertemuan $pertemuan)
     {
         if (request()->ajax()) {
-            $query = ProductGallery::where('products_id', $product->id);
+            $query = PertemuanGallery::where('pertemuans_id', $pertemuan->id);
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
                         <form class="inline-block" action="' . route('dashboard.gallery.destroy', $item->id) . '" method="POST">
-                        <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" >
+                        <button class="px-2 py-1 m-2 text-white transition duration-500 bg-red-500 border border-red-500 rounded-md select-none ease hover:bg-red-600 focus:outline-none focus:shadow-outline" >
                             Hapus
                         </button>
                             ' . method_field('delete') . csrf_field() . '
@@ -41,7 +41,7 @@ class ProductGalleryController extends Controller
                 ->make();
         }
 
-        return view('pages.dashboard.gallery.index', compact('product'));
+        return view('pages.dashboard.gallery.index', compact('pertemuan'));
     }
 
     /**
@@ -49,9 +49,9 @@ class ProductGalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Product $product)
+    public function create(Pertemuan $pertemuan)
     {
-        return view('pages.dashboard.gallery.create', compact('product'));
+        return view('pages.dashboard.gallery.create', compact('pertemuan'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductGalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductGalleryRequest $request, Product $product)
+    public function store(PertemuanGalleryRequest $request, Pertemuan $pertemuan)
     {
         $files = $request->file('files');
 
@@ -69,23 +69,23 @@ class ProductGalleryController extends Controller
             foreach ($files as $file) {
                 $path = $file->store('public/gallery');
 
-                ProductGallery::create([
-                    'products_id' => $product->id,
+                PertemuanGallery::create([
+                    'pertemuans_id' => $pertemuan->id,
                     'url' => $path
                 ]);
             }
         }
 
-        return redirect()->route('dashboard.product.gallery.index', $product->id);
+        return redirect()->route('dashboard.pertemuan.gallery.index', $pertemuan->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProductGallery  $gallery
+     * @param  \App\Models\PertemuanGallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductGallery $gallery)
+    public function show(PertemuanGallery $gallery)
     {
         //
     }
@@ -93,10 +93,10 @@ class ProductGalleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProductGallery  $gallery
+     * @param  \App\Models\PertemuanGallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductGallery $gallery)
+    public function edit(PertemuanGallery $gallery)
     {
         //
     }
@@ -105,10 +105,10 @@ class ProductGalleryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProductGallery  $gallery
+     * @param  \App\Models\PertemuanGallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductGalleryRequest $request, ProductGallery $gallery)
+    public function update(PertemuanGalleryRequest $request, PertemuanGallery $gallery)
     {
         //
     }
@@ -116,13 +116,13 @@ class ProductGalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProductGallery  $productGallery
+     * @param  \App\Models\PertemuanGallery  $pertemuanGallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductGallery $gallery)
+    public function destroy(PertemuanGallery $gallery)
     {
         $gallery->delete();
 
-        return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
+        return redirect()->route('dashboard.pertemuan.gallery.index', $gallery->pertemuans_id);
     }
 }

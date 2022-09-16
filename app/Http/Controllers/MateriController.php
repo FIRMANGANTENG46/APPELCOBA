@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Http\Requests\ProductCategoryRequest;
-use App\Models\ProductCategory;
+use App\Http\Requests\MateriRequest;
+use App\Models\Materi;
 use Yajra\DataTables\Facades\DataTables;
 
-class ProductCategoryController extends Controller
+class MateriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +17,17 @@ class ProductCategoryController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = ProductCategory::query();
+            $query = Materi::query();
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                        <a class="inline-block border border-gray-700 bg-gray-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
-                            href="' . route('dashboard.category.edit', $item->id) . '">
+                        <a class="inline-block px-2 py-1 m-1 text-white transition duration-500 bg-gray-700 border border-gray-700 rounded-md select-none ease hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                            href="' . route('dashboard.materi.edit', $item->id) . '">
                             Edit
                         </a>
-                        <form class="inline-block" action="' . route('dashboard.category.destroy', $item->id) . '" method="POST">
-                        <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" >
+                        <form class="inline-block" action="' . route('dashboard.materi.destroy', $item->id) . '" method="POST">
+                        <button class="px-2 py-1 m-2 text-white transition duration-500 bg-red-500 border border-red-500 rounded-md select-none ease hover:bg-red-600 focus:outline-none focus:shadow-outline" >
                             Hapus
                         </button>
                             ' . method_field('delete') . csrf_field() . '
@@ -40,7 +40,7 @@ class ProductCategoryController extends Controller
                 ->make();
         }
 
-        return view('pages.dashboard.category.index');
+        return view('pages.dashboard.materi.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.category.create');
+        return view('pages.dashboard.materi.create');
     }
 
     /**
@@ -59,22 +59,22 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(ProductCategoryRequest $request)
+    public function store(MateriRequest $request)
     {
         $data = $request->all();
 
-        ProductCategory::create($data);
+        Materi::create($data);
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.materi.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProductCategory  $category
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function show(ProductCategory $category)
+    public function show(Materi $materi)
     {
         //
     }
@@ -82,13 +82,13 @@ class ProductCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProductCategory  $category
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(ProductCategory $category)
+    public function edit(Materi $materi)
     {
-        return view('pages.dashboard.category.edit',[
-            'item' => $category
+        return view('pages.dashboard.materi.edit',[
+            'item' => $materi
         ]);
     }
 
@@ -96,28 +96,28 @@ class ProductCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProductCategory  $category
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProductCategoryRequest $request, ProductCategory $category)
+    public function update(MateriRequest $request, Materi $materi)
     {
         $data = $request->all();
 
-        $category->update($data);
+        $materi->update($data);
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.materi.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProductCategory  $category
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(ProductCategory $category)
+    public function destroy(Materi $materi)
     {
-        $category->delete();
+        $materi->delete();
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.materi.index');
     }
 }

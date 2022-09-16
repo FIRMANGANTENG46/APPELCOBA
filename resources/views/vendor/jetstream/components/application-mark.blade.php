@@ -1,1 +1,1 @@
-<img src="/images/logo.svg" style="height: 30px;"/>
+<img src="/images/kecil.png" style="height: 80px;"/>

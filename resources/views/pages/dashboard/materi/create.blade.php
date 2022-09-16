@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Pertemuan &raquo; {{ $pertemuan->name }} &raquo; Gallery &raquo; Upload Photos
+            {!! __('Materi &raquo; Create') !!}
         </h2>
     </x-slot>
 
@@ -24,25 +24,25 @@
                         </div>
                     </div>
                 @endif
-                <form class="w-full" action="{{ route('dashboard.pertemuan.gallery.store',  $pertemuan->id) }}" method="post" enctype="multipart/form-data">
+                <form class="w-full" action="{{ route('dashboard.materi.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3">
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
-                                Files
+                                Name
                             </label>
-                            <input multiple accept="image/*" value="{{ old('files') }}" name="files[]" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="file" placeholder="Gallery Files">
+                            <input value="{{ old('name') }}" name="name" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nama Materi">
                         </div>
                     </div>
                     <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3 text-right">
                             <button type="submit" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
-                                Save Gallery
+                                Save materi
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div>-
 </x-app-layout>

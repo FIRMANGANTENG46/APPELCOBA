@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Models\ProductCategory;
+use App\Models\Materi;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 
-class ProductCategoryController extends Controller
+class MateriController extends Controller
 {
     public function all(Request $request)
     {
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
         $name = $request->input('name');
-        $show_product = $request->input('show_product');
+        $show_pertemuan = $request->input('show_pertemuan');
 
         if($id)
         {
-            $category = ProductCategory::with(['products'])->find($id);
+            $materi = Materi::with(['pertemuans'])->find($id);
 
-            if($category)
+            if($materi)
                 return ResponseFormatter::success(
-                    $category,
+                    $materi,
                     'Data produk berhasil diambil'
                 );
             else
@@ -33,16 +33,16 @@ class ProductCategoryController extends Controller
                 );
         }
 
-        $category = ProductCategory::query();
+        $materi = Materi::query();
 
         if($name)
-            $category->where('name', 'like', '%' . $name . '%');
+            $materi->where('name', 'like', '%' . $name . '%');
 
-        if($show_product)
-            $category->with('products');
+        if($show_pertemuan)
+            $materi->with('pertemuans');
 
         return ResponseFormatter::success(
-            $category->paginate($limit),
+            $materi->paginate($limit),
             'Data list kategori produk berhasil diambil'
         );
     }

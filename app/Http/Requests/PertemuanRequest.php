@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class TransactionRequest extends FormRequest
+class PertemuanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,10 @@ class TransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'in:PENDING,SUCCESS,CANCELLED,FAILED,SHIPPING,SHIPPED'
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|integer',
+            'materis_id' => 'required|exists:materis,id'
         ];
     }
 }

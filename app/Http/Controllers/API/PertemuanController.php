@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Product;
+use App\Models\Pertemuan;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class PertemuanController extends Controller
 {
     public function all(Request $request)
     {
@@ -16,18 +16,18 @@ class ProductController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         $tags = $request->input('tags');
-        $categories = $request->input('categories');
+        $materis = $request->input('materis');
 
         $price_from = $request->input('price_from');
         $price_to = $request->input('price_to');
 
         if($id)
         {
-            $product = Product::with(['category','galleries'])->find($id);
+            $pertemuan = Pertemuan::with(['materi','galleries'])->find($id);
 
-            if($product)
+            if($pertemuan)
                 return ResponseFormatter::success(
-                    $product,
+                    $pertemuan,
                     'Data produk berhasil diambil'
                 );
             else
@@ -38,28 +38,28 @@ class ProductController extends Controller
                 );
         }
 
-        $product = Product::with(['category','galleries']);
+        $pertemuan = Pertemuan::with(['materi','galleries']);
 
         if($name)
-            $product->where('name', 'like', '%' . $name . '%');
+            $pertemuan->where('name', 'like', '%' . $name . '%');
 
         if($description)
-            $product->where('description', 'like', '%' . $description . '%');
+            $pertemuan->where('description', 'like', '%' . $description . '%');
 
         if($tags)
-            $product->where('tags', 'like', '%' . $tags . '%');
+            $pertemuan->where('tags', 'like', '%' . $tags . '%');
 
         if($price_from)
-            $product->where('price', '>=', $price_from);
+            $pertemuan->where('price', '>=', $price_from);
 
         if($price_to)
-            $product->where('price', '<=', $price_to);
+            $pertemuan->where('price', '<=', $price_to);
 
-        if($categories)
-            $product->where('categories_id', $categories);
+        if($materis)
+            $pertemuan->where('categories_id', $materis);
 
         return ResponseFormatter::success(
-            $product->paginate($limit),
+            $pertemuan->paginate($limit),
             'Data list produk berhasil diambil'
         );
     }

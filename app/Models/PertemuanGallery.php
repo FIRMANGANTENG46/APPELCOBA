@@ -3,19 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ProductCategory extends Model
+class PertemuanGallery extends Model
 {
     use HasFactory, SoftDeletes;
-    
-    protected $fillable = [
-        'name', 
-    ];    
 
-    public function products()
+    protected $fillable = [
+        'pertemuans_id', 'url', 'is_featured'
+    ];
+
+
+    public function getUrlAttribute($url)
     {
-        return $this->hasMany(Product::class, 'categories_id', 'id');
+        return config('app.url') . Storage::url($url);
     }
 }
