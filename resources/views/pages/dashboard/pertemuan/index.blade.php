@@ -33,7 +33,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-10">
                 <a href="{{ route('dashboard.pertemuan.create') }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
-                    + Create Pertemuan
+                    + Tambah Pertemuan
                 </a>
             </div>
             <div class="overflow-hidden shadow sm:rounded-md">
@@ -42,10 +42,10 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nama</th>
-                            <th>Kategori</th>
-                            <th>Total</th>
-                            <th>Aksi</th>
+                            <th>Pertemuan</th>
+                            <th>Materi</th>
+                            <th>Jumlah</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody></tbody>

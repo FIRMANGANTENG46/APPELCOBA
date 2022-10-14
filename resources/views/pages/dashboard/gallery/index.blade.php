@@ -15,7 +15,7 @@
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
                     { data: 'url', name: 'url' },
-                    { data: 'is_featured', name: 'is_featured' },
+
                     {
                         data: 'action',
                         name: 'action',
@@ -32,7 +32,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-10">
                 <a href="{{ route('dashboard.pertemuan.gallery.create', $pertemuan->id) }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
-                    + Upload Photos
+                    + Tambah Foto
                 </a>
             </div>
             <div class="overflow-hidden shadow sm:rounded-md">
@@ -42,7 +42,6 @@
                         <tr>
                             <th class="px-2 py-4">ID</th>
                             <th class="px-6 py-4">Photo</th>
-                            <th class="px-6 py-4">Featured</th>
                             <th class="px-6 py-4">Action</th>
                         </tr>
                         </thead>

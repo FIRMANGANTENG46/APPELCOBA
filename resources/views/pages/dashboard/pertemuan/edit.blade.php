@@ -32,21 +32,21 @@
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
                                 Name
                             </label>
-                            <input value="{{ old('name') ?? $item->name }}" name="name" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Pertemuan Name">
+                            <input value="{{ old('name') ?? $item->name }}" name="name" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nama Pertemuan">
                         </div>
                     </div>
                     <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3">
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
-                                Judul
+                                Link Video
                             </label>
-                            <input value="{{ old('tags') ?? $item->tags }}" name="tags" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Pertemuan Judul. Comma Separated. Example: popular">
+                            <input value="{{ old('tags') ?? $item->tags }}" name="tags" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Link Video Pertemuan">
                         </div>
                     </div>
                      <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3">
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
-                                Materi
+                                Judul Materi
                             </label>
                             <select name="materis_id" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
                                 <option value="{{ $item->materis_id }}">{{ \App\Models\Materi::find($item->materis_id)->name }}</option>
@@ -60,18 +60,18 @@
                     <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3">
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
-                                isi materi
+                                Isi materi
                             </label>
-                            <textarea name="description" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Pertemuan Description">{{ old('description') ?? $item->description }}</textarea>
+                            <textarea name="description" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Silahkan Edit Materi Anda">{{ old('description') ?? $item->description }}</textarea>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap mb-6 -mx-3">
                         <div class="w-full px-3">
                             <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="grid-last-name">
-                                total
+                              Jumlah Pertemuan
                             </label>
-                            <input value="{{ old('price') ?? $item->price }}" name="price" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="number" placeholder="Pertemuan Price">
+                            <input value="{{ old('price') ?? $item->price }}" name="price" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="number" placeholder="Jumlah Pertemuan Dalam 1 Minggu">
                         </div>
                     </div>
                     <div class="flex flex-wrap mb-6 -mx-3">

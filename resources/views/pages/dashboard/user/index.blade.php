@@ -15,6 +15,7 @@
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
                     { data: 'name', name: 'name' },
+                    { data: 'username', name: 'username' },
                     { data: 'email', name: 'email' },
                     { data: 'roles', name: 'roles' },
                     {
@@ -38,6 +39,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nama</th>
+                            <th>Username</th>
                             <th>Email</th>
                             <th>Roles</th>
                             <th>Aksi</th>
