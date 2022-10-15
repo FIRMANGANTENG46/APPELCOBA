@@ -14,16 +14,16 @@
                 },
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
-                    { data: 'name', name: 'name' },
-                    { data: 'username', name: 'username' },
-                    { data: 'email', name: 'email' },
-                    { data: 'roles', name: 'roles' },
+                    { data: 'name', name: 'name',  width: '15%' },
+                    { data: 'username', name: 'username',  width: '15%' },
+                    { data: 'email', name: 'email', width: '25%' },
+                    { data: 'roles', name: 'roles',  width: '10%' },
                     {
                         data: 'action',
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '25%'
+                        width: '8%'
                     },
                 ],
             });

@@ -31,7 +31,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.pertemuan.gallery.create', $pertemuan->id) }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
+                <a href="{{ route('dashboard.pertemuan.gallery.create', $pertemuan->id) }}" class="px-4 py-2 font-bold text-white bg-red-500 rounded shadow-lg hover:bg-green-700">
                     + Tambah Foto
                 </a>
             </div>
