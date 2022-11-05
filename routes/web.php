@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PertemuanController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\PertemuanGalleryController;
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::middleware(['admin'])->group(function () {
             Route::resource('pertemuan', PertemuanController::class);
             Route::resource('materi', MateriController::class);
+            Route::resource('kelas', KelasController::class);
             Route::resource('pertemuan.gallery', PertemuanGalleryController::class)->shallow()->only([
                 'index', 'create', 'store', 'destroy'
             ]);

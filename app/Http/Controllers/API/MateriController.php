@@ -12,7 +12,7 @@ class MateriController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 6);
+        $limit = $request->input('limit', 100);
         $name = $request->input('name');
         $show_pertemuan = $request->input('show_pertemuan');
 
@@ -23,12 +23,12 @@ class MateriController extends Controller
             if($materi)
                 return ResponseFormatter::success(
                     $materi,
-                    'Data produk berhasil diambil'
+                    'Data materi berhasil diambil'
                 );
             else
                 return ResponseFormatter::error(
                     null,
-                    'Data kategori produk tidak ada',
+                    'Data kategori materi tidak ada',
                     404
                 );
         }
@@ -43,7 +43,7 @@ class MateriController extends Controller
 
         return ResponseFormatter::success(
             $materi->paginate($limit),
-            'Data list kategori produk berhasil diambil'
+            'Data list materi berhasil diambil'
         );
     }
 }
