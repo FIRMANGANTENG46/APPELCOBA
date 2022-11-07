@@ -12,7 +12,6 @@ class kelasController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 12);
         $kls = $request->input('kls');
 
         if($id)
@@ -38,7 +37,7 @@ class kelasController extends Controller
             $kelas->where('kls', 'like', '%' . $kls . '%');
 
         return ResponseFormatter::success(
-            $kelas->paginate($limit),
+            $kelas,
             'Data list kelas berhasil diambil'
         );
 
