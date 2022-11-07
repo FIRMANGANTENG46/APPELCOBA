@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\API\KelasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\PertemuanController;
 use App\Http\Controllers\API\MateriController;
-use App\Http\Controllers\API\KelasdiaController;
+use App\Http\Controllers\API\KelasController;
 
 /*
 |--------------------------------------------------------------------------
