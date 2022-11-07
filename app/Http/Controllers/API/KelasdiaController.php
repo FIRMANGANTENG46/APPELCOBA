@@ -6,39 +6,39 @@ use Illuminate\Http\Request;
 
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\kelas;
+use App\Models\Kelas;
 
-class kelasdiaController extends Controller
+class KelasController extends Controller
 {
-    public function getclass(Request $request)
+    public function kelas(Request $request)
     {
         $id = $request->input('id');
         $kls = $request->input('kls');
 
         if($id)
         {
-            $matika = kelas::find($id);
+            $kelas = Kelas::find($id);
 
-            if($matika)
+            if($kelas)
                 return ResponseFormatter::success(
-                    $matika,
-                    'Data matika berhasil diambil'
+                    $kelas,
+                    'Data kelas berhasil diambil'
                 );
             else
                 return ResponseFormatter::error(
                     null,
-                    'Data kategori matika tidak ada',
+                    'Data kategori kelas tidak ada',
                     404
                 );
         }
 
-        $matika = kelas::quaery();
+        $kelas = Kelas::quaery();
 
         if($kls)
-            $matika->where('kls', 'like', '%' . $kls . '%');
+            $kelas->where('kls', 'like', '%' . $kls . '%');
 
         return ResponseFormatter::success(
-            $matika,
+            $kelas,
             'Data list matika berhasil diambil'
         );
 
