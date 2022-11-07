@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
 use Illuminate\Http\Request;
-
 use App\Helpers\ResponseFormatter;
-use App\Http\Controllers\Controller;
 use App\Models\Kelas;
+use App\Http\Controllers\Controller;
 
 class KelasController extends Controller
 {
-    public function kelas(Request $request)
+    public function getclass(Request $request)
     {
         $id = $request->input('id');
         $kls = $request->input('kls');
@@ -32,7 +30,7 @@ class KelasController extends Controller
                 );
         }
 
-        $kelas = Kelas::quaery();
+        $kelas = Kelas::query();
 
         if($kls)
             $kelas->where('kls', 'like', '%' . $kls . '%');
