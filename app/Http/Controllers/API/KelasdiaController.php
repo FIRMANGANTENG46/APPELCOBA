@@ -16,29 +16,29 @@ class kelasdiaController extends Controller
 
         if($id)
         {
-            $kelas = Kelas::find($id);
+            $matika = Kelas::find($id);
 
-            if($kelas)
+            if($matika)
                 return ResponseFormatter::success(
-                    $kelas,
-                    'Data kelas berhasil diambil'
+                    $matika,
+                    'Data matika berhasil diambil'
                 );
             else
                 return ResponseFormatter::error(
                     null,
-                    'Data kategori kelas tidak ada',
+                    'Data kategori matika tidak ada',
                     404
                 );
         }
 
-        $kelas = Kelas::query();
+        $matika = Kelas::quaery();
 
         if($kls)
-            $kelas->where('kls', 'like', '%' . $kls . '%');
+            $matika->where('kls', 'like', '%' . $kls . '%');
 
         return ResponseFormatter::success(
-            $kelas,
-            'Data list kelas berhasil diambil'
+            $matika,
+            'Data list matika berhasil diambil'
         );
 
     }
