@@ -29,7 +29,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('pertemuans', [PertemuanController::class, 'all']);
 Route::get('materis', [MateriController::class, 'all']);
-Route::get('kelas', [KelasController::class, 'all']);
+Route::get('kelas', [KelasController::class, 'getclass']);
+
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);

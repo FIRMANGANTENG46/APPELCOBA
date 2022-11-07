@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class kelasController extends Controller
 {
-    public function all(Request $request)
+    public function getclass(Request $request)
     {
         $id = $request->input('id');
         $kls = $request->input('kls');
