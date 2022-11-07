@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Models\Kelas;
+
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\kelas;
 
 class kelasdiaController extends Controller
 {
@@ -16,7 +17,7 @@ class kelasdiaController extends Controller
 
         if($id)
         {
-            $matika = Kelas::find($id);
+            $matika = kelas::find($id);
 
             if($matika)
                 return ResponseFormatter::success(
@@ -31,7 +32,7 @@ class kelasdiaController extends Controller
                 );
         }
 
-        $matika = Kelas::quaery();
+        $matika = kelas::quaery();
 
         if($kls)
             $matika->where('kls', 'like', '%' . $kls . '%');
