@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\KelasRequset;
-use App\Models\kelas;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -12,7 +12,7 @@ class KelasController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = kelas::query();
+            $query = Kelas::query();
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
@@ -56,7 +56,7 @@ class KelasController extends Controller
     {
         $data = $request->all();
 
-        kelas::create($data);
+        Kelas::create($data);
 
         return redirect()->route('dashboard.kelas.index');
     }
@@ -64,7 +64,7 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kelas  $kelas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show(kelas $kelas)
@@ -75,10 +75,10 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\kelas  $kelas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(kelas $kelas)
+    public function edit(Kelas $kelas)
     {
         return view('pages.dashboard.kelas.edit', [
             'item' => $kelas
@@ -89,10 +89,10 @@ class KelasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kelas  $kelas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(KelasRequset $request, kelas $kelas)
+    public function update(KelasRequset $request, Kelas $kelas)
     {
         $data = $request->all();
 
@@ -104,10 +104,10 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kelas  $kelas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(kelas $kelas)
+    public function destroy(Kelas $kelas)
     {
         $kelas->delete();
 
