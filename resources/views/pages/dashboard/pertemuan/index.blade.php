@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-black-800">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Pertemuan') }}
         </h2>
     </x-slot>
@@ -14,9 +14,9 @@
                 },
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
-                    { data: 'name', name: 'name', width: '25%' },
-                    { data: 'materi.name', name: 'materi.name', width: '25%' },
-                    { data: 'price', name: 'price', width: '5%' },
+                    { data: 'name', name: 'name' },
+                    { data: 'materi.name', name: 'materi.name' },
+                    { data: 'price', name: 'price' },
                     {
                         data: 'action',
                         name: 'action',
@@ -32,7 +32,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.pertemuan.create') }}" class="px-4 py-2 font-bold text-white bg-red-500 rounded shadow-lg hover:bg-green-700">
+                <a href="{{ route('dashboard.pertemuan.create') }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
                     + Tambah Pertemuan
                 </a>
             </div>

@@ -26,7 +26,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'kelas_id',
         'username',
         'phone',
         'roles',
@@ -64,8 +63,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function kelas()
+    public function transactions()
     {
-        return $this->belongsTo(kelas::class, 'kelas_id', 'id');
+        return $this->hasMany(Transaction::class, 'users_id', 'id');
     }
 }
