@@ -7,7 +7,7 @@ use App\Models\Kelas;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 
-class kelasController extends Controller
+class kelasdiaController extends Controller
 {
     public function getclass(Request $request)
     {
