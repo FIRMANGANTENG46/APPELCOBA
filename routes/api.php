@@ -19,7 +19,6 @@ use App\Http\Controllers\API\KelasController;
 */
 
 
-
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('user', [UserController::class, 'fetch']);
     Route::post('user', [UserController::class, 'updateProfile']);
@@ -30,7 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('pertemuans', [PertemuanController::class, 'all']);
 Route::get('materis', [MateriController::class, 'all']);
-Route::get('kelans', [KelasController::class, 'getclass']);
+Route::get('kelas', [KelasController::class, 'getclass']);
 
 
 Route::post('login', [UserController::class, 'login']);
