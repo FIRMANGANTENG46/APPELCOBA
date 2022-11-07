@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\PertemuanController;
 use App\Http\Controllers\API\MateriController;
-use App\Http\Controllers\KelasController;
+use App\Http\Controllers\API\KelasController;
 
 /*
 |--------------------------------------------------------------------------
