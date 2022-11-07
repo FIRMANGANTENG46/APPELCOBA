@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\PertemuanController;
 use App\Http\Controllers\API\MateriController;
-use App\Http\Controllers\API\KelasController;
+use App\Http\Controllers\API\KelasdiaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('pertemuans', [PertemuanController::class, 'all']);
 Route::get('materis', [MateriController::class, 'all']);
-Route::get('kelas', [KelasController::class, 'getclass']);
+Route::get('kelas', [KelasdiaController::class, 'getclass']);
 
 
 Route::post('login', [UserController::class, 'login']);
