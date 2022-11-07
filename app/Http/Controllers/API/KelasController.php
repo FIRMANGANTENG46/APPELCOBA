@@ -17,7 +17,7 @@ class kelasController extends Controller
 
         if($id)
         {
-            $kelas = Kelas::with(['users'])->find($id);
+            $kelas = Kelas::find($id);
 
             if($kelas)
                 return ResponseFormatter::success(
@@ -36,7 +36,7 @@ class kelasController extends Controller
 
         if($kls)
             $kelas->where('kls', 'like', '%' . $kls . '%');
-        
+
         return ResponseFormatter::success(
             $kelas->paginate($limit),
             'Data list kelas berhasil diambil'
