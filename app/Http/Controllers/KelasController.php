@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelans;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
+
 
 class KelasController extends Controller
 {
@@ -82,12 +84,16 @@ class KelasController extends Controller
     * @param  \App\Models\Kelans  $kelans
     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
     */
-   public function edit(Kelans $kelans)
-   {
-       return view('pages.dashboard.kelas.edit',[
-           'item' => $kelans
-       ]);
-   }
+
+
+    public function edit($id)
+    {
+        $item = Kelans::findOrFail($id);
+
+        return view('pages.dashboard.kelas.edit',[
+            'item' => $item
+        ]);
+    }
 
    /**
     * Update the specified resource in storage.
@@ -96,33 +102,27 @@ class KelasController extends Controller
     * @param  \App\Models\Kelans  $kelans
     * @return \Illuminate\Http\RedirectResponse
     */
-   public function update(Request $request, Kelans $kelans)
+   public function update(Request $request, $id)
    {
-
-    //    $data = $request->all();
-
-    //    $kelans->update($data);
-
-    //    return redirect()->route('dashboard.kelas.index');
-
        $data = $request->all();
 
-       $item = Kelans::findOrFail($kelans->id);
+       $item = Kelans::findOrFail($id);
 
        $item->update($data);
 
        return redirect()->route('dashboard.kelas.index');
    }
-
    /**
     * Remove the specified resource from storage.
     *
     * @param  \App\Models\Kelans  $kelans
     * @return \Illuminate\Http\RedirectResponse
     */
-   public function destroy(Kelans $kelans)
+   public function destroy($id)
    {
-       $kelans->delete();
+       $item = Kelans::findOrFail($id);
+
+       $item->delete();
 
        return redirect()->route('dashboard.kelas.index');
    }
