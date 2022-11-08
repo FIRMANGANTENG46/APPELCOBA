@@ -25,6 +25,10 @@
                             {{ __('Materi') }}
                         </x-jet-nav-link>
 
+                        <x-jet-nav-link href="{{ route('dashboard.kelas.index') }}" :active="request()->routeIs('dashboard.kelas.index')">
+                            {{ __('Kelas') }}
+                        </x-jet-nav-link>
+
 
                         <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
                             {{ __('User') }}
@@ -163,6 +167,10 @@
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('dashboard.materi.index') }}" :active="request()->routeIs('dashboard.materi.index')">
                     {{ __('Materi') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('dashboard.kelas.index') }}" :active="request()->routeIs('dashboard.kelas.index')">
+                    {{ __('Kelas') }}
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">

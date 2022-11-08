@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'username',
+        'kelas_id',
         'phone',
         'roles',
         'password',
@@ -67,4 +68,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'users_id', 'id');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelans::class, 'kelas_id', 'id');
+    }
+
+
 }
