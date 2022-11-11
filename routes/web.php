@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PertemuanController;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\PertemuanGalleryController;
 use App\Http\Controllers\MateriController;
 
@@ -42,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             //     'index', 'show', 'edit', 'update'
             // ]);
             Route::resource('user', UserController::class)->only([
-                'index', 'edit', 'update', 'destroy'
+                'index', 'edit', 'update', 'destroy', 'show', 
             ]);
 
      });

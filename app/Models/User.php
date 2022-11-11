@@ -64,14 +64,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class, 'users_id', 'id');
-    }
 
-    public function kelas()
+
+    public function kelans()
     {
-        return $this->belongsTo(Kelans::class, 'kelas_id', 'id');
+        return $this->belongsTo(Kelans::class, 'kelans_id', 'id');
     }
 
 

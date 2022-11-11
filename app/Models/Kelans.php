@@ -15,6 +15,7 @@ class Kelans extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class, 'kelas_id', 'id');
+        return $this->hasMany(User::class, 'kelans_id', 'id');
     }
+
 }

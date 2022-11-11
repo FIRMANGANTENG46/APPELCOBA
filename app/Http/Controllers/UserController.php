@@ -21,8 +21,13 @@ class UserController extends Controller
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
+                    // <a class="inline-block border border-blue-700 bg-blue-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline"
+                    //         href="' . route('dashboard.user.show', $item->id) . '">
+                    //         Show
+                    //     </a>
                     return '
-                        <a class="inline-block border border-gray-700 bg-gray-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
+
+                        <a class="inline-block border border-gray-700 bg-gray-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline"
                             href="' . route('dashboard.user.edit', $item->id) . '">
                             Edit
                         </a>
@@ -69,7 +74,21 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        if (request()->ajax()) {
+            $query = User::with('kelans')->where('kelans_id', $user->id);
+
+            return DataTables::of($query)
+                ->addColumn('action', function ($item) {
+
+                })
+                ->editColumn('price', function ($item) {
+                    return number_format($item->price);
+                })
+                ->rawColumns(['action'])
+                ->make();
+        }
+
+        return view('pages.dashboard.user.show');
     }
 
     /**
@@ -95,7 +114,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $data = $request->all();
-        
+
         $user->update($data);
 
         return redirect()->route('dashboard.user.index');
