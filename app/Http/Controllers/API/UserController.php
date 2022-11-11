@@ -74,7 +74,7 @@ class UserController extends Controller
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'username' => ['required', 'string', 'max:255', 'unique:users'],
-                'kelans_id' => ['required'],
+                'kelans_id' => ['required', 'string'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'phone' => ['nullable', 'string', 'max:255'],
                 'onesignal_player_id' => ['nullable', 'string', 'max:255'],
