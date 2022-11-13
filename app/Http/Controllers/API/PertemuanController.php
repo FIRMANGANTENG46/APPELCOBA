@@ -9,12 +9,10 @@ use Illuminate\Http\Request;
 
 class PertemuanController extends Controller
 {
-
-//penjelesan function
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 1000);
+        $limit = $request->input('limit', 20);
         $name = $request->input('name');
         $description = $request->input('description');
         $tags = $request->input('tags');
@@ -72,6 +70,4 @@ class PertemuanController extends Controller
             'Data list produk berhasil diambil'
         );
     }
-
-//limit dihapus krn membatasi
 }
