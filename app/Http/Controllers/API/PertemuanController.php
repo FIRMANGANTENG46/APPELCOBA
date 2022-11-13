@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class PertemuanController extends Controller
 {
+
+//penjelesan function
     public function all(Request $request)
     {
         $id = $request->input('id');
